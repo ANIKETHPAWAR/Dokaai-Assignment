@@ -1,5 +1,7 @@
 import express, { Application } from 'express';
 
+import { errorHandler } from './middleware/errorHandler';
+import { notFoundHandler } from './middleware/notFoundHandler';
 import routes from './routes';
 
 export const createApp = (): Application => {
@@ -13,6 +15,9 @@ export const createApp = (): Application => {
   });
 
   app.use('/api', routes);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 };
