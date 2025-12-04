@@ -3,6 +3,7 @@ import { Router } from 'express';
 import { sendSuccess } from '../utils/response';
 
 import organizationRoutes from './organizationRoutes';
+import userRoutes from './userRoutes';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.get('/', (_req, res) => {
 });
 
 router.use('/organizations', organizationRoutes);
+router.use('/users', userRoutes);
 
 export default router;
 
