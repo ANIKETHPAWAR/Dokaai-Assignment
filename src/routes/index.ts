@@ -2,6 +2,8 @@ import { Router } from 'express';
 
 import { sendSuccess } from '../utils/response';
 
+import organizationRoutes from './organizationRoutes';
+
 const router = Router();
 
 router.get('/', (_req, res) => {
@@ -10,6 +12,8 @@ router.get('/', (_req, res) => {
     data: { version: 'v1' },
   });
 });
+
+router.use('/organizations', organizationRoutes);
 
 export default router;
 
