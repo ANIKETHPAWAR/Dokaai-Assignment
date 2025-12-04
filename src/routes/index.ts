@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { sendSuccess } from '../utils/response';
 
+import decisionRoutes from './decisionRoutes';
 import groupPreferenceRoutes from './groupPreferenceRoutes';
 import notificationGroupRoutes from './notificationGroupRoutes';
 import notificationTopicRoutes from './notificationTopicRoutes';
@@ -24,6 +25,7 @@ router.use('/notification-groups', notificationGroupRoutes);
 router.use('/notification-topics', notificationTopicRoutes);
 router.use('/group-preferences', groupPreferenceRoutes);
 router.use('/topic-preferences', topicPreferenceRoutes);
+router.use('/decision', decisionRoutes);
 
 export default router;
 
