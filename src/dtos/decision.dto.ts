@@ -14,7 +14,7 @@ export type DecisionRequestInput = z.infer<typeof decisionRequestSchema>;
 export const decisionResponseSchema = z.object({
   allowed: z.boolean(),
   reason: z.string(),
-  details: z.record(z.any()).optional(),
+  details: z.record(z.string(), z.any()).optional(),
 });
 
 export type DecisionResponse = z.infer<typeof decisionResponseSchema>;

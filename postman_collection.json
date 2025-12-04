@@ -1,0 +1,316 @@
+{
+  "info": {
+    "name": "Notification Preference Service",
+    "_postman_id": "5dff9d5e-2b5a-4e6d-b828-collection",
+    "description": "Sample requests for the Notification Preference Service API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Organizations",
+      "item": [
+        {
+          "name": "List Organizations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "organizations"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Organization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Beta Labs\",\n  \"description\": \"Beta testing customers\",\n  \"metadata\": {\n    \"tier\": \"beta\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "organizations"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationId\": \"org-acme\",\n  \"email\": \"new.user@acme.com\",\n  \"phone\": \"+10001112222\",\n  \"timezone\": \"America/Los_Angeles\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Groups",
+      "item": [
+        {
+          "name": "List Groups (Acme)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/notification-groups?organizationId=org-acme",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "notification-groups"
+              ],
+              "query": [
+                {
+                  "key": "organizationId",
+                  "value": "org-acme"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Topics",
+      "item": [
+        {
+          "name": "List Topics (Acme)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/notification-topics?organizationId=org-acme",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "notification-topics"
+              ],
+              "query": [
+                {
+                  "key": "organizationId",
+                  "value": "org-acme"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group Preferences",
+      "item": [
+        {
+          "name": "Set Group Preference",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"user-bob\",\n  \"groupId\": \"group-product\",\n  \"isEnabled\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/group-preferences",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "group-preferences"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Group Preferences for Alice",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/group-preferences/user/user-alice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "group-preferences",
+                "user",
+                "user-alice"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Topic Channel Preferences",
+      "item": [
+        {
+          "name": "Set Topic Preference",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"user-alice\",\n  \"topicId\": \"topic-release\",\n  \"channel\": \"push\",\n  \"isEnabled\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/topic-preferences",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "topic-preferences"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Topic Preferences for Alice",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/topic-preferences/user/user-alice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "topic-preferences",
+                "user",
+                "user-alice"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Decision",
+      "item": [
+        {
+          "name": "Decision Check (Alice / Release / Email)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationId\": \"org-acme\",\n  \"userId\": \"user-alice\",\n  \"topicId\": \"topic-release\",\n  \"channel\": \"email\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/decision/check",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "decision",
+                "check"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
+
