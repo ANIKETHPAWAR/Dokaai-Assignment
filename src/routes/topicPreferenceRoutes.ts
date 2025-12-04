@@ -1,23 +1,19 @@
 import { Router } from 'express';
 
-import { TopicPreferenceController } from '../controllers/TopicPreferenceController';
 import {
-  NotificationTopicRepository,
-  TopicPreferenceRepository,
-  UserRepository,
-} from '../repositories';
+  notificationTopicRepository,
+  topicPreferenceRepository,
+  userRepository,
+} from '../container';
+import { TopicPreferenceController } from '../controllers/TopicPreferenceController';
 import { TopicPreferenceService } from '../services/TopicPreferenceService';
 
 const router = Router();
 
-const topicPreferenceRepository = new TopicPreferenceRepository();
-const userRepository = new UserRepository();
-const topicRepository = new NotificationTopicRepository();
-
 const topicPreferenceService = new TopicPreferenceService(
   topicPreferenceRepository,
   userRepository,
-  topicRepository,
+  notificationTopicRepository,
 );
 const topicPreferenceController = new TopicPreferenceController(topicPreferenceService);
 

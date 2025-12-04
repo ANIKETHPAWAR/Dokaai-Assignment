@@ -1,23 +1,19 @@
 import { Router } from 'express';
 
-import { NotificationGroupController } from '../controllers/NotificationGroupController';
 import {
-  NotificationGroupRepository,
-  NotificationTopicRepository,
-  OrganizationRepository,
-} from '../repositories';
+  notificationGroupRepository,
+  notificationTopicRepository,
+  organizationRepository,
+} from '../container';
+import { NotificationGroupController } from '../controllers/NotificationGroupController';
 import { NotificationGroupService } from '../services/NotificationGroupService';
 
 const router = Router();
 
-const organizationRepository = new OrganizationRepository();
-const groupRepository = new NotificationGroupRepository();
-const topicRepository = new NotificationTopicRepository();
-
 const groupService = new NotificationGroupService(
-  groupRepository,
+  notificationGroupRepository,
   organizationRepository,
-  topicRepository,
+  notificationTopicRepository,
 );
 const groupController = new NotificationGroupController(groupService);
 

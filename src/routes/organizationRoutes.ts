@@ -1,12 +1,11 @@
 import { Router } from 'express';
 
+import { organizationRepository } from '../container';
 import { OrganizationController } from '../controllers/OrganizationController';
-import { OrganizationRepository } from '../repositories';
 import { OrganizationService } from '../services/OrganizationService';
 
 const router = Router();
 
-const organizationRepository = new OrganizationRepository();
 const organizationService = new OrganizationService(organizationRepository);
 const organizationController = new OrganizationController(organizationService);
 
