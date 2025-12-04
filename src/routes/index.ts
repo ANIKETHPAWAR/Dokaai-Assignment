@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { sendSuccess } from '../utils/response';
 
+import groupPreferenceRoutes from './groupPreferenceRoutes';
 import notificationGroupRoutes from './notificationGroupRoutes';
 import notificationTopicRoutes from './notificationTopicRoutes';
 import organizationRoutes from './organizationRoutes';
@@ -20,6 +21,7 @@ router.use('/organizations', organizationRoutes);
 router.use('/users', userRoutes);
 router.use('/notification-groups', notificationGroupRoutes);
 router.use('/notification-topics', notificationTopicRoutes);
+router.use('/group-preferences', groupPreferenceRoutes);
 
 export default router;
 
