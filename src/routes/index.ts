@@ -3,6 +3,7 @@ import { Router } from 'express';
 import { sendSuccess } from '../utils/response';
 
 import notificationGroupRoutes from './notificationGroupRoutes';
+import notificationTopicRoutes from './notificationTopicRoutes';
 import organizationRoutes from './organizationRoutes';
 import userRoutes from './userRoutes';
 
@@ -18,6 +19,7 @@ router.get('/', (_req, res) => {
 router.use('/organizations', organizationRoutes);
 router.use('/users', userRoutes);
 router.use('/notification-groups', notificationGroupRoutes);
+router.use('/notification-topics', notificationTopicRoutes);
 
 export default router;
 
