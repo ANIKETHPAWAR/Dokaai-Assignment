@@ -1,18 +1,14 @@
 import { Router } from 'express';
 
-import { GroupPreferenceController } from '../controllers/GroupPreferenceController';
 import {
-  GroupPreferenceRepository,
-  NotificationGroupRepository,
-  UserRepository,
-} from '../repositories';
+  groupPreferenceRepository,
+  notificationGroupRepository,
+  userRepository,
+} from '../container';
+import { GroupPreferenceController } from '../controllers/GroupPreferenceController';
 import { GroupPreferenceService } from '../services/GroupPreferenceService';
 
 const router = Router();
-
-const groupPreferenceRepository = new GroupPreferenceRepository();
-const userRepository = new UserRepository();
-const notificationGroupRepository = new NotificationGroupRepository();
 
 const groupPreferenceService = new GroupPreferenceService(
   groupPreferenceRepository,

@@ -1,30 +1,23 @@
 import { Router } from 'express';
 
-import { DecisionController } from '../controllers/DecisionController';
 import {
-  GroupPreferenceRepository,
-  NotificationGroupRepository,
-  NotificationTopicRepository,
-  OrganizationRepository,
-  TopicPreferenceRepository,
-  UserRepository,
-} from '../repositories';
+  groupPreferenceRepository,
+  notificationGroupRepository,
+  notificationTopicRepository,
+  organizationRepository,
+  topicPreferenceRepository,
+  userRepository,
+} from '../container';
+import { DecisionController } from '../controllers/DecisionController';
 import { DecisionService } from '../services/DecisionService';
 
 const router = Router();
 
-const organizationRepository = new OrganizationRepository();
-const userRepository = new UserRepository();
-const groupRepository = new NotificationGroupRepository();
-const topicRepository = new NotificationTopicRepository();
-const groupPreferenceRepository = new GroupPreferenceRepository();
-const topicPreferenceRepository = new TopicPreferenceRepository();
-
 const decisionService = new DecisionService(
   organizationRepository,
   userRepository,
-  groupRepository,
-  topicRepository,
+  notificationGroupRepository,
+  notificationTopicRepository,
   groupPreferenceRepository,
   topicPreferenceRepository,
 );

@@ -2,6 +2,7 @@ import http from 'http';
 import { AddressInfo } from 'net';
 
 import { createApp } from './app';
+import { seedDemoData } from './utils/seed';
 
 const PORT = Number(process.env.PORT ?? 3000);
 
@@ -9,6 +10,8 @@ const app = createApp();
 const server = http.createServer(app);
 
 const startServer = () => {
+  seedDemoData();
+
   server.listen(PORT, () => {
     const address = server.address() as AddressInfo;
     console.info(`Notification service listening on port ${address.port}`);
