@@ -6,6 +6,7 @@ import groupPreferenceRoutes from './groupPreferenceRoutes';
 import notificationGroupRoutes from './notificationGroupRoutes';
 import notificationTopicRoutes from './notificationTopicRoutes';
 import organizationRoutes from './organizationRoutes';
+import topicPreferenceRoutes from './topicPreferenceRoutes';
 import userRoutes from './userRoutes';
 
 const router = Router();
@@ -22,6 +23,7 @@ router.use('/users', userRoutes);
 router.use('/notification-groups', notificationGroupRoutes);
 router.use('/notification-topics', notificationTopicRoutes);
 router.use('/group-preferences', groupPreferenceRoutes);
+router.use('/topic-preferences', topicPreferenceRoutes);
 
 export default router;
 
